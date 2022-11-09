@@ -1,0 +1,65 @@
+.add-or-edit-modal {
+  .action-image {
+    border: 1px dashed #212943;
+    height: 50px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title{
+        font-weight: 600;
+    }
+  }
+  .content-file {
+    min-height: 250px;
+    max-height: 370px;
+    width: 100%;
+    background: #f5f5f5;
+    border: 1px dashed #212943;
+    padding: 10px;
+    overflow-y: auto;
+    padding-top: 25px;
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: #d62929;
+    }
+
+    &:-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: #d62929;
+    }
+
+    .list-image {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .item-image {
+        padding: 8px;
+        border: 1px solid #9f9f9f;
+        margin-left: 23px;
+        margin-bottom: 14px;
+        border-radius: 6px;
+        position: relative;
+        .icon-close {
+          position: absolute;
+          right: -9px;
+          top: -8px;
+          cursor: pointer;
+        }
+        .img-image {
+          height: 100px;
+          width: 90px;
+        }
+      }
+    }
+    .content-note {
+      margin-top: 60px;
+    }
+  }
+}

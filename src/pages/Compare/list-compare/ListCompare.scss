@@ -1,0 +1,39 @@
+.data-empty{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .content-empty{
+        .text-empty-data{
+            text-align: center;
+            font-size: 18px;
+            color: #A3A8AF;
+            margin-top: 20px;
+        }
+    }
+}
+.verified-approving{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E2A300;
+    border-radius: 5px;
+}
+.verified-approved{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36C76F;
+    border-radius: 5px;
+}

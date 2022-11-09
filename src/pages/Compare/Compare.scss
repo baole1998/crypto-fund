@@ -1,0 +1,100 @@
+.container-compare-page {
+    .tilte-page{
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .compare-table {
+        margin-top: 10px;
+        .e-table-header {
+            padding: 15px 20px 10px 20px;
+            margin-top: 10px;
+            .e-header {
+                display: flex;
+                padding: 16px 0px;
+                align-items: center;
+                flex-direction: row;
+                & button {
+                    min-width: 150px;
+                    max-width: 250px;
+                    border-radius: 5px;
+                    &.contained {
+                      color: '#fff';
+                      background: #212943;
+                      &:hover {
+                        background-color: #101929 !important;
+                      }
+                    }
+                    &.outline {
+                      color: #223354;
+                      background: #fff;
+                      border: 1px solid #223354;
+                      margin-left: 1rem;
+                      &:hover {
+                        background-color: #212943 !important;
+                        color: #fff !important;
+                      }
+                    }
+                  }
+                .from-search {
+                   min-width: 300px;
+                }
+                .box-input-search {
+                    align-items: center;
+                    flex: 1;
+                    .input-search {
+                        height: 35px;
+                        width: 100%;
+                        padding-left: 10px;
+                        border: 1px solid;
+                        border-radius: 4px;
+                        border-color: rgba(0, 0, 0, 0.23);
+                    }
+                }
+                .input-focused {
+                    border: 1px solid;
+                    border-radius: 4px;
+                    border-color: #1976d2;
+                    .input-search {
+                        border: 0px solid;
+                    }
+                }
+                .action-button {
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
+            }
+            .item-result{
+                .label-result{
+                    height: unset;
+                    padding: 6px 12px;
+                    overflow: hidden;
+                    font-size: 14px;
+                    background: #e6f4ff;
+                    box-sizing: border-box;
+                    text-align: left;
+                    display: inline-flex;
+                    align-items: center;
+                    font-weight: 400;
+                    border-radius: 20px;
+                    justify-content: flex-start;  
+                    margin-right: 10px;
+                    span{
+                        margin-left: 15px;
+                        cursor: pointer;
+                    }
+                }
+               
+            }
+        }
+        
+    }
+}
+legend {
+    width: 0%;
+}
+td {
+    text-transform: inherit !important;
+    padding-right: 20px;
+}

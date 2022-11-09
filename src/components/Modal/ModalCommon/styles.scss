@@ -1,0 +1,52 @@
+.add-or-edit-modal {
+    &:focus-visible {
+      border: 0px;
+    }
+    .content {
+      &:focus-visible {
+        border: 0px;
+        outline: 0px;
+      }
+      .header-modal {
+        min-height: 60px;
+        border-bottom: 1px solid #0000001f;
+        padding: 10px 20px;
+        .title {
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .close-icon{
+            cursor: pointer;
+        }
+      }
+      .content-modal {
+        padding: 20px;
+        .txt-description{
+            width: 100%;
+            border: 1px solid #0000001f;
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 70px;
+            &:focus-visible {
+              outline: 0px;
+            }
+        }
+        .MuiSelect-outlined{
+          
+        }
+      }
+      .footer-modal {
+        border-top: 1px solid #0000001f;
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 20px;
+        align-items: center;
+      }
+      .MuiOutlinedInput-root {
+        .MuiOutlinedInput-input {
+          padding: 10px 14px;
+        }
+      }
+    }
+  }
+  

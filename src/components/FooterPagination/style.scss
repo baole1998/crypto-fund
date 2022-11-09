@@ -1,0 +1,33 @@
+.div-pagination {
+  padding: 15px;
+  .rowPerPage {
+    margin-left: 10px;
+    .MuiInputBase-root {
+      bottom: 3px;
+    }
+  }
+  .rowPerPage .MuiInput-underline::after {
+    border-bottom: none;
+  }
+
+  .rowPerPage .MuiInput-underline::before {
+    border-bottom: none;
+  }
+
+  .rowPerPage .MuiInput-underline:hover::before {
+    border-bottom: none;
+  }
+
+  nav ul {
+    margin: 0;
+    justify-content: center;
+  }
+  .select-page {
+    display: inline-flex;
+    position: relative;
+    bottom: -3px;
+  }
+}
+legend {
+  width: 0% !important;
+}

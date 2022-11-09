@@ -1,0 +1,82 @@
+.search-page{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    .header-search{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 20px;
+        border-bottom: 1px solid #9F9F9F;
+        .title-search{
+            font-size: 23px;
+            font-weight: 600;
+        }
+        .close-search {
+            cursor: pointer;
+        }
+    }
+    .content-search{
+        flex: 1 1 auto;
+        .item-search{
+            padding: 10px 20px;
+            .title{
+                font-weight: 500;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .content-item-search{
+                justify-content: space-between;
+                .select-item{
+                    background: #E9E9E9;
+                    width: calc((50% - 10px));
+                    text-align: center;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    img{
+                        display: none;
+                    }
+                }
+                .selected{
+                    border: 1px solid #36C76F;
+                    background: #fff;
+                    img{
+                        position: absolute;
+                        top: 0px;
+                        left: -5px;
+                        display: block;
+                    }
+                }
+            }
+            .MuiSelect-select{
+                padding: 5px 14px;
+            }
+            .MuiOutlinedInput-input{
+                padding: 10px 14px;
+            }
+            padding-bottom: 20px;
+            border-bottom: 1px solid #0000001f;
+        }
+    }
+    .footer-search{
+        margin: 10px 20px 50px 20px;
+        display: flex;
+        justify-content: space-between;
+        .button-delete{
+            margin-right: 10px;
+        }
+        .label-delete{
+            text-transform: inherit;
+        }
+    }
+}
+td{
+    text-transform: inherit !important;
+    padding-right: 20px;
+}

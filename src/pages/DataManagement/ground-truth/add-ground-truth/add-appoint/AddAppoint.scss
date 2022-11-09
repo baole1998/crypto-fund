@@ -1,0 +1,39 @@
+.MuiOutlinedInput-root {
+  .MuiOutlinedInput-input {
+    padding: 10px 14px;
+  }
+}
+.create-groundtruth-container {
+  margin: 10px 10px;
+  height: 80vh;
+  .create-groundtruth-content-container {
+    height: 100%;
+    margin-top: 1rem;
+    // overflow: hidden;
+  }
+  .info-table {
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 5px !important;
+    height: 50rem;
+    position: relative;
+    &.data-table {
+      overflow: hidden;
+    }
+  }
+  .footer-search {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    .btn {
+      border-radius: 5px !important;
+      &.button-search {
+        background-color: #369bc7;
+      }
+      &.button-create {
+        background-color: #36c76f;
+      }
+    }
+  }
+}

@@ -1,0 +1,173 @@
+.container-general-data-management-page {
+    .go-back{
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .action-header{
+      display: flex;
+      justify-content: space-between;
+      .action-left{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        .customer-doc{
+          font-size: 20px;
+          font-weight: 600;
+          text-transform: uppercase;
+         
+        }
+        .level-gt{
+          margin-left: 20px;
+          width: 200px;
+          height: 45px;
+          left: 549px;
+          top: 129px;
+          background: #E2A300;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 5px;
+          display: flex;
+          font-size: 14px;
+          color: #fff;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          font-weight: 600;
+        }
+    }
+    .action-right{
+        display: flex;
+        .btn-customer-info-cancel{
+          margin-left: 20px;
+          width: 100px;
+          height: 45px;
+          left: 549px;
+          top: 129px;
+          font-weight: 600;
+          background: #a8abaa;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 5px;
+          display: flex;
+          font-size: 14px;
+          color: #fff;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          margin-right: 5px;
+        }
+        .btn-customer-info-save{
+          margin-left: 20px;
+          width: 150px;
+          height: 45px;
+          left: 549px;
+          top: 129px;
+          font-weight: 600;
+          background: #36C76F;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 5px;
+          display: flex;
+          font-size: 14px;
+          color: #fff;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+      }
+    }
+    
+    .general-data-management-table {
+        margin-top: 10px;
+        .e-table-header {
+            padding: 15px 20px 10px 20px;
+            margin-top: 10px;
+            .e-header {
+                display: flex;
+                padding: 16px 0px;
+                align-items: center;
+                flex-direction: row;
+                & button {
+                    min-width: 150px;
+                    max-width: 250px;
+                    border-radius: 5px;
+                    &.contained {
+                      color: '#fff';
+                      background: #212943;
+                      &:hover {
+                        background-color: #101929 !important;
+                      }
+                    }
+                    &.outline {
+                      color: #223354;
+                      background: #fff;
+                      border: 1px solid #223354;
+                      margin-left: 1rem;
+                      &:hover {
+                        background-color: #212943 !important;
+                        color: #fff !important;
+                      }
+                    }
+                  }
+                .from-search {
+                   min-width: 300px;
+                }
+                .box-input-search {
+                    align-items: center;
+                    flex: 1;
+                    .input-search {
+                        height: 35px;
+                        width: 100%;
+                        padding-left: 10px;
+                        border: 1px solid;
+                        border-radius: 4px;
+                        border-color: rgba(0, 0, 0, 0.23);
+                    }
+                }
+                .input-focused {
+                    border: 1px solid;
+                    border-radius: 4px;
+                    border-color: #1976d2;
+                    .input-search {
+                        border: 0px solid;
+                    }
+                }
+                .action-button {
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
+            }
+            .item-result{
+                .label-result{
+                    height: unset;
+                    padding: 6px 12px;
+                    overflow: hidden;
+                    font-size: 14px;
+                    background: #e6f4ff;
+                    box-sizing: border-box;
+                    text-align: left;
+                    display: inline-flex;
+                    align-items: center;
+                    font-weight: 400;
+                    border-radius: 20px;
+                    justify-content: flex-start;  
+                    margin-right: 10px;
+                    span{
+                        margin-left: 15px;
+                        cursor: pointer;
+                    }
+                }
+               
+            }
+        }
+        
+    }
+  }
+  legend {
+    width: 0%;
+  }
+  td {
+    text-transform: inherit !important;
+    padding-right: 20px;
+  }
+  
