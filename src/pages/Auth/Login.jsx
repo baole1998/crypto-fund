@@ -1,197 +1,195 @@
 import {
-    Card,
-    Grid,
-    Button,
-    Checkbox,
-    CircularProgress,
-    FormControlLabel,
-} from '@mui/material'
-import React, { useState } from 'react'
-import useAuth from './../../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
-import { Box, styled, useTheme } from '@mui/system'
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+  Card,
+  Grid,
+  Button,
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  Link,
+} from '@mui/material';
+import React, { useState } from 'react';
+import useAuth from './../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { Box, styled, useTheme } from '@mui/system';
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
+import { useTranslation } from 'react-i18next';
+import './Login.scss';
+import '@mui/material/styles';
+import { getValidationErrorMesage } from '../../common/helpers/common';
+import Register from './Register';
 
 const FlexBox = styled(Box)(() => ({
-    display: 'flex',
-    alignItems: 'center',
-}))
+  display: 'flex',
+  alignItems: 'center',
+}));
 
 const JustifyBox = styled(FlexBox)(() => ({
-    justifyContent: 'center',
-}))
+  justifyContent: 'center',
+}));
 
 const ContentBox = styled(Box)(() => ({
-    height: '100%',
-    padding: '32px',
-    position: 'relative',
-    background: 'rgba(0, 0, 0, 0.01)',
-}))
+  height: '100%',
+  padding: '32px',
+  position: 'relative',
+  background: 'rgba(0, 0, 0, 0.01)',
+}));
 
 const IMG = styled('img')(() => ({
-    width: '100%',
-}))
+  width: '100%',
+}));
 
 const JWTRoot = styled(JustifyBox)(() => ({
-    background: '#1A2038',
-    minHeight: '100% !important',
-    '& .card': {
-        maxWidth: 800,
-        borderRadius: 12,
-        margin: '1rem',
-    },
-}))
+  background: '#1A2038',
+  minHeight: '100% !important',
+  '& .card': {
+    maxWidth: 800,
+    borderRadius: 12,
+    margin: '1rem',
+  },
+}));
 
 const StyledProgress = styled(CircularProgress)(() => ({
-    position: 'absolute',
-    top: '6px',
-    left: '25px',
-}))
+  position: 'absolute',
+  top: '6px',
+  left: '25px',
+}));
 
 const Login = () => {
-    const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [userInfo, setUserInfo] = useState({
-        email: '',
-        password: '',
-    })
-    const [message, setMessage] = useState('')
-    const { login } = useAuth()
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+    agreement: false,
+  });
+  const [message, setMessage] = useState('');
+  const { login } = useAuth();
 
-    const handleChange = ({ target: { name, value } }) => {
-        let temp = { ...userInfo }
-        temp[name] = value
-        setUserInfo(temp)
+  const handleChange = ({ target: { name, value } }) => {
+    let temp = { ...userInfo };
+    temp[name] = value;
+    setUserInfo(temp);
+  };
+
+  const { palette } = useTheme();
+  const textError = palette.error.main;
+
+  const { t } = useTranslation();
+
+  const handleFormSubmit = async (event) => {
+    setLoading(true);
+    try {
+      await login(userInfo.email, userInfo.password);
+      navigate('/');
+    } catch (e) {
+      console.log(e);
+      setMessage('Thông tin tài khoản không chính xác');
+      setLoading(false);
     }
+  };
 
-    const { palette } = useTheme()
-    const textError = palette.error.main
+  return (
+    <JWTRoot>
+      <Card className="card">
+        <Grid container>
+          <Grid item lg={5} md={5} sm={5} xs={12}>
+            <JustifyBox p={4} height="100%">
+              <IMG src="/static/images/logo/logo-1.png" alt="" />
+            </JustifyBox>
+          </Grid>
+          <Grid item lg={7} md={7} sm={7} xs={12}>
+            <ContentBox>
+              <ValidatorForm onSubmit={handleFormSubmit}>
+                <TextValidator
+                  sx={{ mb: 3, width: '100%' }}
+                  variant="outlined"
+                  size="small"
+                  label={t('pages.common.labels.username')}
+                  onChange={handleChange}
+                  type="email"
+                  name="email"
+                  value={userInfo.email}
+                  validators={['required', 'isEmail']}
+                  errorMessages={[
+                    getValidationErrorMesage(
+                      t('pages.common.labels.username'),
+                      t('pages.common.validations.required'),
+                    ),
+                    getValidationErrorMesage(
+                      t('pages.common.labels.username'),
+                      t('pages.common.validations.isEmail'),
+                    ),
+                  ]}
+                />
+                <TextValidator
+                  sx={{ mb: 'px', width: '100%' }}
+                  label={t('pages.common.labels.password')}
+                  variant="outlined"
+                  size="small"
+                  onChange={handleChange}
+                  name="password"
+                  type="password"
+                  value={userInfo.password}
+                  validators={['required']}
+                  errorMessages={[
+                    getValidationErrorMesage(
+                      t('pages.common.labels.password'),
+                      t('pages.common.validations.required'),
+                    ),
+                  ]}
+                />
+                <FormControlLabel
+                  sx={{ mb: '2px', maxWidth: 288 }}
+                  name="agreement"
+                  onChange={handleChange}
+                  control={
+                    <Checkbox
+                      size="small"
+                      onChange={({ target: { checked } }) =>
+                        handleChange({
+                          target: {
+                            name: 'agreement',
+                            value: checked,
+                          },
+                        })
+                      }
+                      checked={userInfo.agreement}
+                    />
+                  }
+                  label={t('pages.common.labels.remember_password')}
+                />
+                {message && (
+                  <div sx={{ color: textError, mb: 1 }}>{message}</div>
+                )}
+                <FlexBox mb={2} flexWrap="wrap">
+                  <Link
+                    mb={{ width: '100%' }}
+                    className="router-link"
+                    to="/register"
+                  >
+                    Đăng ký tài khoản
+                  </Link>
+                  <Box position="relative">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={loading}
+                      type="submit"
+                    >
+                      {t('pages.common.labels.login')}
+                    </Button>
+                    {loading && (
+                      <StyledProgress size={24} className="buttonProgress" />
+                    )}
+                  </Box>
+                </FlexBox>
+              </ValidatorForm>
+            </ContentBox>
+          </Grid>
+        </Grid>
+      </Card>
+    </JWTRoot>
+  );
+};
 
-    const handleFormSubmit = async (event) => {
-        setLoading(true)
-        try {
-            await login(userInfo.email, userInfo.password)
-            navigate('/')
-        } catch (e) {
-            console.log(e)
-            setMessage("Thông tin tài khoản không chính xác")
-            setLoading(false)
-        }
-    }
-
-
-    return (
-        <JWTRoot>
-            <Card className="card">
-                <Grid container>
-                    <Grid item lg={5} md={5} sm={5} xs={12}>
-                        <JustifyBox p={4} height="100%">
-                            <IMG
-                                src="/static/images/vps-logo.png"
-                                alt=""
-                            />
-                        </JustifyBox>
-                    </Grid>
-                    <Grid item lg={7} md={7} sm={7} xs={12}>
-                        <ContentBox>
-                            <ValidatorForm onSubmit={handleFormSubmit}>
-                                <TextValidator
-                                    sx={{ mb: 3, width: '100%' }}
-                                    variant="outlined"
-                                    size="small"
-                                    label="Tài khoản"
-                                    onChange={handleChange}
-                                    type="email"
-                                    name="email"
-                                    value={userInfo.email}
-                                    validators={['required', 'isEmail']}
-                                    errorMessages={[
-                                        'this field is required',
-                                        'email is not valid',
-                                    ]}
-                                />
-                                <TextValidator
-                                    sx={{ mb: '12px', width: '100%' }}
-                                    label="Mật khẩu"
-                                    variant="outlined"
-                                    size="small"
-                                    onChange={handleChange}
-                                    name="password"
-                                    type="password"
-                                    value={userInfo.password}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <FormControlLabel
-                                    sx={{ mb: '12px', maxWidth: 288 }}
-                                    name="agreement"
-                                    onChange={handleChange}
-                                    control={
-                                        <Checkbox
-                                            size="small"
-                                            onChange={({
-                                                target: { checked },
-                                            }) =>
-                                                handleChange({
-                                                    target: {
-                                                        name: 'agreement',
-                                                        value: checked,
-                                                    },
-                                                })
-                                            }
-                                            checked={userInfo.agreement || true}
-                                        />
-                                    }
-                                    label="Nhớ mật khẩuu"
-                                />
-                                {message && (
-                                    <div sx={{ color: textError, mb: 1 }}>
-                                        {message}
-                                    </div>
-                                )}
-
-                                <FlexBox mb={2} flexWrap="wrap">
-                                    <Box position="relative">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            disabled={loading}
-                                            type="submit"
-                                        >
-                                            Đăng nhập
-                                        </Button>
-                                        {loading && (
-                                            <StyledProgress
-                                                size={24}
-                                                className="buttonProgress"
-                                            />
-                                        )}
-                                    </Box>
-                                    {/* <Span sx={{ mr: 1, ml: '20px' }}>hoặc</Span>
-                                    <Button
-                                        sx={{ textTransform: 'capitalize' }}
-                                        onClick={() =>
-                                            navigate('/session/signup')
-                                        }
-                                    >
-                                        Đăng ký
-                                    </Button> */}
-                                </FlexBox>
-                                {/* <Button
-                                    sx={{ color: textPrimary }}
-                                    onClick={() =>
-                                        navigate('/session/forgot-password')
-                                    }
-                                >
-                                    Quên mật khẩu?
-                                </Button> */}
-                            </ValidatorForm>
-                        </ContentBox>
-                    </Grid>
-                </Grid>
-            </Card>
-        </JWTRoot>
-    )
-}
-
-export default Login
+export default Login;

@@ -102,12 +102,8 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
-    const register = async (email, username, password) => {
-        const response = await axios.get('/api/auth/register', {
-            email,
-            username,
-            password,
-        })
+    const register = async (payload) => {
+        const response = await axios.get('/api/auth/register', payload)
 
         const { accessToken, user } = response.data
         setSession(accessToken)

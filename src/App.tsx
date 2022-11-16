@@ -8,6 +8,8 @@ import { CssBaseline } from '@mui/material';
 import ThemeProvider from './theme/ThemeProvider';
 import {AuthProvider} from './contexts/JWTAuthContext';
 import 'bootstrap/dist/css/bootstrap.css';
+import './common/scss/common.scss';
+
 function App() {
   const content = useRoutes(router)
   

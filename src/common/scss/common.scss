@@ -1,0 +1,16 @@
+* {
+	font-family: 'Helvetica Neue';
+}
+
+.router-link {
+	font-size: 15px;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: unset !important;
+	}
+}
+
+.validator-message {
+	color: '#de0b32';
+}

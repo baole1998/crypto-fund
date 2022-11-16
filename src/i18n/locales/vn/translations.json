@@ -1,0 +1,27 @@
+{
+    "pages" : {
+        "common": {
+            "labels" : {
+                "email": "Email",
+                "username": "Tên đăng nhập",
+                "password": "Mật khẩu",
+                "confirm_password": "Nhập lại mật khẩu",
+                "first_name": "Tên",
+                "last_name": "Họ và tên đệm",
+                "birth_day": "Ngày sinh",
+                "avatar": "Ảnh đại diện",
+                "login": "Đăng nhập",
+                "logout": "Đăng xuất",
+                "back": "Quay lại",
+                "remember_password": "Nhớ mật khẩu"
+            },
+            "validations": {
+                "required": "là bắt buộc",
+                "isEmail": "phải là có định dạng email"
+            }
+        },
+        "titles": {
+            "register": "Đăng ký tài khoản"
+        }
+    }
+}
