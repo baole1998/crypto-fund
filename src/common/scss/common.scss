@@ -5,6 +5,7 @@
 .router-link {
 	font-size: 15px;
 	cursor: pointer;
+	text-decoration: none;
 
 	&:hover {
 		text-decoration: unset !important;

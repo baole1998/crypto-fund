@@ -8,12 +8,13 @@
                 "confirm_password": "Nhập lại mật khẩu",
                 "first_name": "Tên",
                 "last_name": "Họ và tên đệm",
-                "birth_day": "Ngày sinh",
+                "date_of_birth": "Ngày sinh",
                 "avatar": "Ảnh đại diện",
                 "login": "Đăng nhập",
                 "logout": "Đăng xuất",
                 "back": "Quay lại",
-                "remember_password": "Nhớ mật khẩu"
+                "remember_password": "Nhớ mật khẩu",
+                "phone_number": "Số điện thoại"
             },
             "validations": {
                 "required": "là bắt buộc",

@@ -1,68 +1,59 @@
-import {
-  Card,
-  Grid,
-  Button,
-  Checkbox,
-  CircularProgress,
-  FormControlLabel,
-  Link,
-} from '@mui/material';
-import React, { useState } from 'react';
-import useAuth from './../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
-import { Box, styled, useTheme } from '@mui/system';
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
-import { useTranslation } from 'react-i18next';
-import './Login.scss';
-import '@mui/material/styles';
-import { getValidationErrorMesage } from '../../common/helpers/common';
-import Register from './Register';
+import { Button, Card, Checkbox, CircularProgress, FormControlLabel, Grid } from "@mui/material";
+import "@mui/material/styles";
+import { Box, styled, useTheme } from "@mui/system";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import { Link, useNavigate } from "react-router-dom";
+import { getValidationErrorMesage } from "../../common/helpers/common";
+import useAuth from "./../../hooks/useAuth";
+import "./Login.scss";
 
 const FlexBox = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
+  display: "flex",
+  alignItems: "center",
 }));
 
 const JustifyBox = styled(FlexBox)(() => ({
-  justifyContent: 'center',
+  justifyContent: "center",
 }));
 
 const ContentBox = styled(Box)(() => ({
-  height: '100%',
-  padding: '32px',
-  position: 'relative',
-  background: 'rgba(0, 0, 0, 0.01)',
+  height: "100%",
+  padding: "32px",
+  position: "relative",
+  background: "rgba(0, 0, 0, 0.01)",
 }));
 
-const IMG = styled('img')(() => ({
-  width: '100%',
+const IMG = styled("img")(() => ({
+  width: "100%",
 }));
 
 const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100% !important',
-  '& .card': {
+  background: "#1A2038",
+  minHeight: "100% !important",
+  "& .card": {
     maxWidth: 800,
     borderRadius: 12,
-    margin: '1rem',
+    margin: "1rem",
   },
 }));
 
 const StyledProgress = styled(CircularProgress)(() => ({
-  position: 'absolute',
-  top: '6px',
-  left: '25px',
+  position: "absolute",
+  top: "6px",
+  left: "25px",
 }));
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     agreement: false,
   });
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const { login } = useAuth();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -80,10 +71,10 @@ const Login = () => {
     setLoading(true);
     try {
       await login(userInfo.email, userInfo.password);
-      navigate('/');
+      navigate("/");
     } catch (e) {
       console.log(e);
-      setMessage('Thông tin tài khoản không chính xác');
+      setMessage("Thông tin tài khoản không chính xác");
       setLoading(false);
     }
   };
@@ -101,45 +92,48 @@ const Login = () => {
             <ContentBox>
               <ValidatorForm onSubmit={handleFormSubmit}>
                 <TextValidator
-                  sx={{ mb: 3, width: '100%' }}
-                  variant="outlined"
+                  sx={{ mb: 3, width: "100%" }}
+                  variant="filled"
                   size="small"
-                  label={t('pages.common.labels.username')}
+                  label={t("pages.common.labels.username")}
                   onChange={handleChange}
                   type="email"
                   name="email"
                   value={userInfo.email}
-                  validators={['required', 'isEmail']}
+                  validators={[
+                    "required",
+                    "isEmail"
+                  ]}
                   errorMessages={[
                     getValidationErrorMesage(
-                      t('pages.common.labels.username'),
-                      t('pages.common.validations.required'),
+                      t("pages.common.labels.username"),
+                      t("pages.common.validations.required")
                     ),
                     getValidationErrorMesage(
-                      t('pages.common.labels.username'),
-                      t('pages.common.validations.isEmail'),
+                      t("pages.common.labels.username"),
+                      t("pages.common.validations.isEmail")
                     ),
                   ]}
                 />
                 <TextValidator
-                  sx={{ mb: 'px', width: '100%' }}
-                  label={t('pages.common.labels.password')}
-                  variant="outlined"
+                  sx={{ mb: "3px", width: "100%" }}
+                  label={t("pages.common.labels.password")}
+                  variant="filled"
                   size="small"
                   onChange={handleChange}
                   name="password"
                   type="password"
                   value={userInfo.password}
-                  validators={['required']}
+                  validators={["required"]}
                   errorMessages={[
                     getValidationErrorMesage(
-                      t('pages.common.labels.password'),
-                      t('pages.common.validations.required'),
+                      t("pages.common.labels.password"),
+                      t("pages.common.validations.required")
                     ),
                   ]}
                 />
                 <FormControlLabel
-                  sx={{ mb: '2px', maxWidth: 288 }}
+                  sx={{ mb: "2px", maxWidth: 288 }}
                   name="agreement"
                   onChange={handleChange}
                   control={
@@ -148,7 +142,7 @@ const Login = () => {
                       onChange={({ target: { checked } }) =>
                         handleChange({
                           target: {
-                            name: 'agreement',
+                            name: "agreement",
                             value: checked,
                           },
                         })
@@ -156,31 +150,20 @@ const Login = () => {
                       checked={userInfo.agreement}
                     />
                   }
-                  label={t('pages.common.labels.remember_password')}
+                  label={t("pages.common.labels.remember_password")}
                 />
-                {message && (
-                  <div sx={{ color: textError, mb: 1 }}>{message}</div>
-                )}
+                {message && <div sx={{ color: textError, mb: 1 }}>{message}</div>}
                 <FlexBox mb={2} flexWrap="wrap">
-                  <Link
-                    mb={{ width: '100%' }}
-                    className="router-link"
-                    to="/register"
-                  >
-                    Đăng ký tài khoản
-                  </Link>
+                  <Box width="100%" marginBottom="10px">
+                    <Link width="100%" className="router-link" to="/register">
+                      Đăng ký tài khoản
+                    </Link>
+                  </Box>
                   <Box position="relative">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      disabled={loading}
-                      type="submit"
-                    >
-                      {t('pages.common.labels.login')}
+                    <Button variant="contained" color="primary" disabled={loading} type="submit">
+                      {t("pages.common.labels.login")}
                     </Button>
-                    {loading && (
-                      <StyledProgress size={24} className="buttonProgress" />
-                    )}
+                    {loading && <StyledProgress size={24} className="buttonProgress" />}
                   </Box>
                 </FlexBox>
               </ValidatorForm>
