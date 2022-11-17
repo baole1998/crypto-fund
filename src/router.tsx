@@ -19,6 +19,7 @@ import AddAppoint from './pages/DataManagement/ground-truth/add-ground-truth/add
 import CreateCompare from './pages/Compare/create-compare/CreateCompare';
 import DetailCompare from './pages/Compare/detail-compare/DetailCompare';
 import DetailGroundTruth from './pages/DataManagement/ground-truth/detail-ground-truth/DetailGroundTruth.view';
+import Register from './pages/Auth/Register';
 
 const Loader = (Component) => (props) =>
   (
@@ -33,6 +34,10 @@ const routes: RouteObject[] = [
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
   },
   {
     path: '',
@@ -61,7 +66,6 @@ const routes: RouteObject[] = [
             path: 'general-data-management/:id',
             element: <DetailGeneralDataManagement />
           },
-         
           {
             path: 'manage-data-detail',
             element: <DetailDataManagement />
